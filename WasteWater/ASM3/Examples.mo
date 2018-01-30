@@ -250,25 +250,27 @@ Main Author:
     WasteWater.ASM3.sensor_COD sensor_COD1 annotation (Placement(transformation(
             extent={{76,18},{92,34}})));
   equation
-    connect(divider.Out1, Settler.Feed) annotation (Line(points={{40,7},{40,9.4},
-            {48,9.4}}));
-    connect(tank5.Out, divider.In) annotation (Line(points={{14,4},{20,4}}));
+    connect(divider.Out1, Settler.Feed) annotation (Line(points={{39.9,7},{39.9,
+            9.4},{48,9.4}}));
+    connect(tank5.Out, divider.In) annotation (Line(points={{14,4},{16,4},{16,
+            4.3},{19.9,4.3}}));
     connect(tank4.Out, tank5.In) annotation (Line(points={{-12,4},{-6,4}}));
     connect(tank3.Out, tank4.In) annotation (Line(points={{-40,4},{-32,4}}));
     connect(tank3.In, tank2.Out) annotation (Line(points={{-60,4},{-70,4},{-70,
             18},{-18,18},{-18,32},{-28,32}}));
     connect(tank1.Out, tank2.In) annotation (Line(points={{-56,32},{-48,32}}));
-    connect(mixer.Out, tank1.In) annotation (Line(points={{-84,32},{-76,32}}));
+    connect(mixer.Out, tank1.In) annotation (Line(points={{-84,31.7},{-80,31.7},
+            {-80,32},{-76,32}}));
     connect(Settler.Effluent, Effluent.In) annotation (Line(points={{68.2,13.7},
             {72,13.7},{72,-4},{90,-4}}));
     connect(mixer.In1, WWSource.Out) annotation (Line(points={{-104,35.9},{-104,
             74},{-68,74},{-68,77.5},{-68.2,77.5},{-68.2,81}}));
-    connect(blower1.AirOut, tank3.AirIn) annotation (Line(points={{-50,-42},{
-            -50,-5.8}}));
-    connect(blower2.AirOut, tank4.AirIn) annotation (Line(points={{-22,-42},{
-            -22,-5.8}}));
-    connect(blower3.AirOut, tank5.AirIn) annotation (Line(points={{4,-42},{4,
-            -5.8}}));
+    connect(blower1.AirOut, tank3.AirIn) annotation (Line(points={{-51,-42},{
+            -51,-24},{-50,-24},{-50,-5.8}}));
+    connect(blower2.AirOut, tank4.AirIn) annotation (Line(points={{-23,-42},{
+            -23,-24},{-22,-24},{-22,-5.8}}));
+    connect(blower3.AirOut, tank5.AirIn) annotation (Line(points={{3,-42},{3,
+            -24},{4,-24},{4,-5.8}}));
     connect(tank5.MeasurePort, sensor_O2.In) annotation (Line(points={{9.5,8.5},
             {10,8.5},{10,18}}));
     connect(Feedback.y, PI1.u) annotation (Line(points={{81,50},{86,50}}));
@@ -279,8 +281,8 @@ Main Author:
       annotation (Line(points={{-63,-76},{-35.1,-76},{-35.1,-55},{-40.1,-55}}));
     connect(divider.Out2, RecyclePump.In) annotation (Line(points={{40,2.2},{44,
             2.2},{44,-8.7},{-74,-8.7}}));
-    connect(RecyclePump.Out, mixer.In3) annotation (Line(points={{-94.2,-14.9},
-            {-108,-14.9},{-108,26.6},{-104,26.6},{-104,27.1}}));
+    connect(RecyclePump.Out, mixer.In3) annotation (Line(points={{-94,-14.9},{
+            -108,-14.9},{-108,26.6},{-103.9,26.6},{-103.9,27.1}}));
     connect(OxygenSetPoint.y, Feedback.u1)
       annotation (Line(points={{58.9,49},{62.5,49},{62.5,50},{64,50}}));
     connect(Feedback1.y, PI2.u) annotation (Line(points={{41,88},{56,88}}));
@@ -292,11 +294,11 @@ Main Author:
             {32,80}}));
     connect(Settler.Return, ReturnPump.In) annotation (Line(points={{55,-1.6},{
             55,-22.7},{36,-22.7}}));
-    connect(ReturnPump.Out, mixer.In2) annotation (Line(points={{15.8,-28.9},{
-            -112,-28.9},{-112,32},{-104,32}}));
+    connect(ReturnPump.Out, mixer.In2) annotation (Line(points={{16,-28.9},{
+            -112,-28.9},{-112,31.6},{-104.1,31.6}}));
     connect(Settler.Waste, WastePump.In) annotation (Line(points={{61,-1.6},{61,
             -27.3},{70,-27.3}}));
-    connect(WastePump.Out, WasteSludge.In) annotation (Line(points={{90.2,-21.1},
+    connect(WastePump.Out, WasteSludge.In) annotation (Line(points={{90,-21.1},
             {100,-21.1},{100,-34},{80,-34},{80,-49.2},{86,-49.2}}));
     connect(Constant2.y, ReturnPump.u)
       annotation (Line(points={{43,-58},{46,-58},{46,-28.5},{34.8,-28.5}}));
@@ -307,31 +309,32 @@ Main Author:
     connect(blower2.u, Constant1.y)
       annotation (Line(points={{-12.1,-55},{-8,-55},{-8,-76},{-63,-76}}));
     connect(Temperature.y, tank1.T)
-      annotation (Line(points={{-81.5,56},{-78,56},{-78,36},{-75.8,36}}, color=
+      annotation (Line(points={{-81.4,56},{-78,56},{-78,36},{-76,36}},   color=
             {0,0,255}));
     connect(Temperature.y, tank2.T)
-      annotation (Line(points={{-81.5,56},{-48,56},{-48,36}}, color={0,0,255}));
-    connect(Temperature.y, tank3.T) annotation (Line(points={{-81.5,56},{-52,56},
-            {-52,14},{-60,14},{-60,8},{-59.5,8.4},{-59.5,8.4},{-60,8}}, color={
+      annotation (Line(points={{-81.4,56},{-48,56},{-48,36}}, color={0,0,255}));
+    connect(Temperature.y, tank3.T) annotation (Line(points={{-81.4,56},{-52,56},
+            {-52,14},{-60,14},{-60,8},{-59.5,8},{-60,8}},               color={
             0,0,255}));
-    connect(Temperature.y, tank4.T) annotation (Line(points={{-81.5,56},{-52,56},
+    connect(Temperature.y, tank4.T) annotation (Line(points={{-81.4,56},{-52,56},
             {-52,14},{-32,14},{-32,8}}, color={0,0,255}));
-    connect(Temperature.y, tank5.T) annotation (Line(points={{-81.5,56},{-52,56},
-            {-52,14},{-5.9,14},{-5.9,8},{-5.8,8}}, color={0,0,255}));
+    connect(Temperature.y, tank5.T) annotation (Line(points={{-81.4,56},{-52,56},
+            {-52,14},{-5.9,14},{-5.9,8},{-6,8}},   color={0,0,255}));
     connect(CombiTableTime.y, WWSource.data)
-      annotation (Line(points={{-97,88},{-88,88}}, color={0,0,255}));
+      annotation (Line(points={{-97,88},{-87,88}}, color={0,0,255}));
     connect(sensor_NO.In, tank2.MeasurePort) annotation (Line(points={{-32,48},
             {-32,36.5},{-32.5,36.5}}));
     connect(FixedDelay1.u, sensor_NO.Sno)
-      annotation (Line(points={{-20,58},{-22,58}}, color={0,0,255}));
+      annotation (Line(points={{-20,58},{-22.2,58}},
+                                                   color={0,0,255}));
     connect(Limiter1.u, FixedDelay1.y)
-      annotation (Line(points={{6,58},{4,58}}, color={0,0,255}));
+      annotation (Line(points={{6,58},{3,58}}, color={0,0,255}));
     connect(sensor_NH1.In, Settler.Effluent) annotation (Line(points={{68,18},{
-            68,13.7}}));
+            68,16},{68,13.7},{68.2,13.7}}));
     connect(sensor_COD1.In, Settler.Effluent) annotation (Line(points={{84,18},
-            {84,14},{68,14}}));
+            {84,13.7},{68.2,13.7}}));
     connect(sensor_NO1.In, Settler.Effluent) annotation (Line(points={{100,18},
-            {100,14},{68.2,14}}));
+            {100,13.7},{68.2,13.7}}));
 
     annotation (
       Diagram(coordinateSystem(
