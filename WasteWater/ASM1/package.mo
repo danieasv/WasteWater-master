@@ -3,7 +3,6 @@ package ASM1 "Component models for the Activated Sludge Model No.1"
 extends Modelica.Icons.Library;
 
 
-
 model deni "ASM1 denitrification tank"
   //denitrification tank based on the ASM1 model
 
@@ -84,13 +83,14 @@ model nitri "ASM1 nitrification tank"
 equation
 
   // Temperature dependent oxygen saturation by Simba
-  So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
+  So_sat = 8;//13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
 
   // extends the Oxygen differential equation by an aeration term
   // aeration [mgO2/l]; AirIn.Q_air needs to be in
   // Simulationtimeunit [m3*day^-1]
-  aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
-  // aeration = Kla * (So_sat - So);
+  // aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
+  // Kla = 240;
+  aeration = 240 * (So_sat - So);
 
   // volume dependent dilution term of each concentration
 
@@ -866,6 +866,7 @@ of ASM1 wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_TSS;
+
 
 annotation (
   Documentation(info="This library contains components to build models of biological municipal
