@@ -1,5 +1,5 @@
 within WasteWater.ASM1;
-model nitri5 "ASM1 nitrification tank"
+model nitri5c "ASM1 nitrification tank"
   // nitrification (aerated) tank, based on the ASM1 model
 
   extends WasteWater.Icons.nitri;
@@ -13,7 +13,8 @@ model nitri5 "ASM1 nitrification tank"
   parameter Modelica.SIunits.Length de=4.5 "depth of aeration";
   parameter Real R_air=23.5 "specific oxygen feed factor [gO2/(m^3*m)]";
   WWU.MassConcentration So_sat "Dissolved oxygen saturation";
-  parameter Real Kla=84;
+  Real Kla;
+  //parameter Real So = 2;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
             -10},{-90,10}})));
   Interfaces.WWFlowAsm1out Out annotation (Placement(transformation(extent={{90,
@@ -24,11 +25,15 @@ model nitri5 "ASM1 nitrification tank"
           extent={{-110,30},{-90,50}})));
   Interfaces.AirFlow AirIn annotation (Placement(transformation(extent={{-5,
             -103},{5,-93}})));
+
+initial equation
+  Kla = 84;
+
 equation
-//13.89
+  //13.89
+  //So = 2;
   // Temperature dependent oxygen saturation by Simba
   So_sat = 8; //+ (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
-
   // extends the Oxygen differential equation by an aeration term
   // aeration [mgO2/l]; AirIn.Q_air needs to be in
   // Simulationtimeunit [m3*day^-1]
@@ -36,6 +41,8 @@ equation
   // Kla = 240;
   //aeration = (1/V)*(Q*So+rk*V+240*V*(So_sat - So)-Q*So);
   aeration = Kla*(So_sat - So);
+  //Kla = aeration/(So_sat - So);
+  (Kla*So_sat - aeration)/Kla = 2;
 
   // volume dependent dilution term of each concentration
 
@@ -67,4 +74,4 @@ Parameters:
   de    - depth of the aeration system [m]
   R_air - specific oxygen feed factor [g O2/(m3*m)]
 "));
-end nitri5;
+end nitri5c;
