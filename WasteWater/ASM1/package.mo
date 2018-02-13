@@ -62,7 +62,7 @@ model nitri "ASM1 nitrification tank"
   extends Interfaces.ASM1base;
 
   // tank specific parameters
-  parameter Modelica.SIunits.Volume V=1000 "Volume of nitrification tank";
+  parameter Modelica.SIunits.Volume V=1333 "Volume of nitrification tank";
 
   // aeration system dependent parameters
   parameter Real alpha=0.7 "Oxygen transfer factor";
@@ -81,16 +81,17 @@ model nitri "ASM1 nitrification tank"
   Interfaces.AirFlow AirIn annotation (Placement(transformation(extent={{-5,
             -103},{5,-93}})));
 equation
-
+//13.89
   // Temperature dependent oxygen saturation by Simba
-  So_sat = 8;//13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
+  So_sat = 8; //+ (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
 
   // extends the Oxygen differential equation by an aeration term
   // aeration [mgO2/l]; AirIn.Q_air needs to be in
   // Simulationtimeunit [m3*day^-1]
   // aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
   // Kla = 240;
-  aeration = 240 * (So_sat - So);
+  //aeration = (1/V)*(Q*So+rk*V+240*V*(So_sat - So)-Q*So);
+  aeration = 240*(So_sat - So);
 
   // volume dependent dilution term of each concentration
 
