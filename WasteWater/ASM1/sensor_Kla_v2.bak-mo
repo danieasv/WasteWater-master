@@ -1,0 +1,31 @@
+within WasteWater.ASM1;
+model sensor_Kla_v2 "Kla"
+
+  extends WasteWater.Icons.sensor_COD;
+  Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
+            -110},{10,-90}})));
+  Modelica.Blocks.Interfaces.RealOutput COD annotation (Placement(
+        transformation(extent={{88,-10},{108,10}})));
+  Modelica.Blocks.Interfaces.RealInput Kla3 annotation (Placement(transformation(
+          extent={{-84,30},{-64,50}})));
+  Modelica.Blocks.Interfaces.RealInput Kla4 annotation (Placement(transformation(
+          extent={{-84,-10},{-64,10}})));
+  Modelica.Blocks.Interfaces.RealInput Kla5 annotation (Placement(transformation(
+          extent={{-84,-50},{-64,-30}})));
+
+  Real AE(start=0);
+  Real T(start=1e-3);
+
+equation
+  In.Q = 0.0;
+  COD = In.Si + In.Ss + In.Xi + In.Xs + In.Xbh + In.Xba + In.Xp;
+
+  der(T) = 1.0;
+  der(AE) = 2/T/1.8/1000*1333*(Kla3 + Kla4 + Kla5);
+
+  annotation (
+    Documentation(info="This component measures the chemical oxygen demand (COD) concentration [g/m3]
+of ASM1 wastewater and provides the result as output signal (to be
+further processed with blocks of the Modelica.Blocks library).
+"));
+end sensor_Kla_v2;

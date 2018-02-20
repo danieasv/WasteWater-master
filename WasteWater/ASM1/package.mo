@@ -69,6 +69,7 @@ model nitri "ASM1 nitrification tank"
   parameter Modelica.SIunits.Length de=4.5 "depth of aeration";
   parameter Real R_air=23.5 "specific oxygen feed factor [gO2/(m^3*m)]";
   WWU.MassConcentration So_sat "Dissolved oxygen saturation";
+  //Real Kla;
 
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
             -10},{-90,10}})));
@@ -76,6 +77,8 @@ model nitri "ASM1 nitrification tank"
             -10},{110,10}})));
   Interfaces.WWFlowAsm1out MeasurePort annotation (Placement(transformation(
           extent={{50,40},{60,50}})));
+  Modelica.Blocks.Interfaces.RealOutput Kla annotation (Placement(transformation(
+          extent={{-28,30},{-8,50}})));
   Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
           extent={{-110,30},{-90,50}})));
   Interfaces.AirFlow AirIn annotation (Placement(transformation(extent={{-5,
@@ -89,9 +92,9 @@ equation
   // aeration [mgO2/l]; AirIn.Q_air needs to be in
   // Simulationtimeunit [m3*day^-1]
   // aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
-  // Kla = 240;
+  Kla = 240;
   //aeration = (1/V)*(Q*So+rk*V+240*V*(So_sat - So)-Q*So);
-  aeration = 240*(So_sat - So);
+  aeration = Kla*(So_sat - So);
 
   // volume dependent dilution term of each concentration
 
@@ -229,14 +232,12 @@ equation
           -2.22045e-15,-17}}));
   connect(S8.Up, S9.Dn) annotation (Line(points={{-2.22045e-15,55},{
           -2.22045e-15,59}}));
-  connect(Feed, S6.In) annotation (Line(points={{-100,10},{-67.5,10},{-67.5,9.8},
+  connect(Feed, S6.In) annotation (Line(points={{-100,14},{-67.5,14},{-67.5,9.8},
           {-35,9.8}}));
-  connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-100},{30,
-          -100}}));
+  connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-96},{30,-96}}));
   connect(S10.Out, Effluent) annotation (Line(points={{35,85.5},{67.5,85.5},{
-          67.5,57},{100,57}}));
-  connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-100},{-30,
-          -100}}));
+          67.5,57},{102,57}}));
+  connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-96},{-30,-96}}));
 
   // total sludge concentration in clarifier feed
   Xf = 0.75*(Feed.Xs + Feed.Xbh + Feed.Xba + Feed.Xp + Feed.Xi);
