@@ -17,6 +17,6 @@ model Pumping_energy_PE "PE"
 
 equation
   der(T) = 1.0;
-  der(PE) = (1/T)*(0.004*Qa+0.008*Qr+0.05*Qw);
+  der(PE*T) = (0.004*Qa+0.008*Qr+0.05*Qw);
 
 end Pumping_energy_PE;

@@ -9,25 +9,22 @@ model Mixing_energy_ME "Mixing Energy sensor"
           extent={{-84,-10},{-64,10}})));
   Modelica.Blocks.Interfaces.RealInput Kla5 annotation (Placement(transformation(
           extent={{-84,-50},{-64,-30}})));
-          Modelica.Blocks.Interfaces.RealOutput MEout
-    annotation (Placement(transformation(extent={{88,-10},{108,10}})));
+  Modelica.Blocks.Interfaces.RealOutput ME  annotation (Placement(transformation(extent={{88,-10},{108,10}})));
 
-  Real ME(start=0);
+
   Real T(start=1e-3);
-  Real Kla[3] = {Kla3,Kla4,Kla5};
   Real Sum = 0;
-
+  Real output1(start = 0);
+  Real output2(start = 0);
+  Real output3(start = 0);
 equation
   der(T) = 1.0;
-  for i in 1:3 loop
-    if (Kla[i] < 20) then
-      Sum =   Sum + 0.005*1333;
-    else
-      Sum =  Sum + 0;
-    end if;
-  end for;
+  output1 = if (Kla3 < 20) then (0.005*1333) else (0);
+  output2 = if (Kla4 < 20) then (0.005*1333) else (0);
+  output3 = if (Kla5 < 20) then (0.005*1333) else (0);
 
-  der(ME) = (24/T)*Sum;
-  der(MEout) = (24/T)*Sum;
+
+
+  der(ME*T) = 24*(output1 + output2 + output3 + 2*(0.005*1000));
 
 end Mixing_energy_ME;

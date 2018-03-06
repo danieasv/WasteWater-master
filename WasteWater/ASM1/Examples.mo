@@ -1483,8 +1483,8 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
       columns=integer(({2,3,4,5,6,7,8,9,10,11,12,13,14,15})),
       tableName="Inf_dry",
       tableOnFile=("Inf_dry") <> "NoName",
-      fileName=
-          "M:/Documents/GitHub/New/WasteWater-master/WasteWater/Resources/ASM1/Inf_dry.txt")
+      fileName=ModelicaServices.ExternalReferences.loadResource(
+          "modelica://WasteWater/Resources/ASM1/Inf_dry.txt"))
                                            annotation (Placement(transformation(
             extent={{-111,78},{-91,98}})));
     WasteWater.ASM1.WWSource
@@ -1775,8 +1775,8 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
       columns=integer(({2,3,4,5,6,7,8,9,10,11,12,13,14,15})),
       tableName="Inf_dry",
       tableOnFile=("Inf_dry") <> "NoName",
-      fileName=
-          "M:/Documents/GitHub/New/WasteWater-master/WasteWater/Resources/ASM1/Inf_dry.txt")
+      fileName=ModelicaServices.ExternalReferences.loadResource(
+          "modelica://WasteWater/Resources/ASM1/Inf_dry.txt"))
                                            annotation (Placement(transformation(
             extent={{-111,78},{-91,98}})));
     WasteWater.ASM1.WWSource
@@ -1803,10 +1803,8 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
       annotation (Placement(transformation(extent={{84,-89},{104,-69}})));
     WasteWater.ASM1.Mixing_energy_ME mixing_energy_ME
       annotation (Placement(transformation(extent={{7,62},{27,82}})));
-    Modelica.Blocks.Sources.Constant Temp(k=15)
-      annotation (Placement(transformation(extent={{-92,6},{-82,16}})));
-    WasteWater.ASM1.nitri5_3 tank5
-      annotation (Placement(transformation(extent={{-5,-6},{15,14}})));
+    WasteWater.ASM1.nitri5c tank5
+      annotation (Placement(transformation(extent={{-6,-6},{14,14}})));
   equation
     connect(divider.Out1, Settler.Feed) annotation (Line(points={{39,6.6},{44,
             6.6},{44,6.4},{48,6.4}}));
@@ -1914,36 +1912,25 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
         points={{94,-89},{115,-89},{115,11},{92,11},{92,10.7},{68.2,10.7}},
         color={0,0,255},
         smooth=Smooth.None));
-    connect(Aeration_Energy_AE.Kla5, mixing_energy_ME.Kla5) annotation (Line(
-          points={{35.6,82},{35,82},{35,80},{25,80},{25,57},{6,57},{6,68},{9.6,
-            68}}, color={0,0,127}));
     connect(Aeration_Energy_AE.Kla4, tank4.Kla) annotation (Line(points={{35.6,
             86},{-11,86},{-11,8},{-24.8,8}}, color={0,0,127}));
     connect(mixing_energy_ME.Kla4, tank4.Kla) annotation (Line(points={{9.6,72},
             {-11,72},{-11,8},{-24.8,8}}, color={0,0,127}));
     connect(mixing_energy_ME.Kla3, tank3.Kla) annotation (Line(points={{9.6,76},
-            {-22,76},{-22,14},{-37,14},{-37,8},{-51.8,8}}, color={0,0,127}));
-    connect(Aeration_Energy_AE.Kla3, tank3.Kla) annotation (Line(points={{35.6,
-            90},{-15,90},{-15,76},{-22,76},{-22,14},{-37,14},{-37,8},{-51.8,8}},
+            {-15,76},{-15,14},{-51,14},{-51,8},{-51.8,8}}, color={0,0,127}));
+    connect(Aeration_Energy_AE.Kla3, tank3.Kla) annotation (Line(points={{35.6,90},
+            {-15,90},{-15,14},{-51,14},{-51,8},{-51.8,8}},
           color={0,0,127}));
-    connect(Temp.y, tank3.T) annotation (Line(points={{-81.5,11},{-70,11},{-70,
-            8},{-60,8},{-60,8}}, color={0,0,127}));
-    connect(tank4.T, tank3.T)
-      annotation (Line(points={{-33,8},{-60,8}}, color={0,0,127}));
-    connect(tank1.T, tank3.T) annotation (Line(points={{-76,36},{-76,11},{-69,
-            11},{-69,8},{-60,8}}, color={0,0,127}));
-    connect(tank2.T, tank3.T) annotation (Line(points={{-48,36},{-62,36},{-62,
-            12},{-76,12},{-76,11},{-70,11},{-70,8},{-60,8}}, color={0,0,127}));
+    connect(Aeration_Energy_AE.Kla5, mixing_energy_ME.Kla5) annotation (Line(
+          points={{35.6,82},{3,82},{3,68},{9.6,68}}, color={0,0,127}));
+    connect(tank5.MeasurePort, sensor_O2.In)
+      annotation (Line(points={{9.5,8.5},{9.5,38},{20.5,38}}, color={0,0,0}));
+    connect(tank5.Kla, mixing_energy_ME.Kla5) annotation (Line(points={{2.2,8},
+            {4,8},{4,45},{10,45},{10,57},{9.6,57},{9.6,68}}, color={0,0,127}));
     connect(tank4.Out, tank5.In)
-      annotation (Line(points={{-13,4},{-5,4}}, color={0,0,0}));
-    connect(tank5.Out, divider.In) annotation (Line(points={{15,4},{17,4},{17,
+      annotation (Line(points={{-13,4},{-6,4}}, color={0,0,0}));
+    connect(tank5.Out, divider.In) annotation (Line(points={{14,4},{17,4},{17,
             4.3},{19,4.3}}, color={0,0,0}));
-    connect(sensor_O2.In, tank5.MeasurePort) annotation (Line(points={{20.5,38},
-            {15,38},{15,8.5},{10.5,8.5}}, color={0,0,255}));
-    connect(tank5.Kla, mixing_energy_ME.Kla5) annotation (Line(points={{3.2,8},
-            {8,8},{8,57},{6,57},{6,68},{9.6,68}}, color={0,0,127}));
-    connect(tank5.T, tank4.T)
-      annotation (Line(points={{-5,8},{-33,8}}, color={0,0,127}));
     annotation (
       Diagram(coordinateSystem(
           preserveAspectRatio=false,

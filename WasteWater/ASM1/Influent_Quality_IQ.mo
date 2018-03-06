@@ -25,7 +25,7 @@ equation
   BODe = 0.65*(In.Ss+In.Xs+(1-0.08)*(In.Xbh+In.Xba));
 
   der(T) = 1.0;
-  der(IQ) = (1/(T*1000))*(2*SSe+1*CODe+30*SNJe+10*SNOe+2*BODe);
+  der(IQ*T) = (1/(1000))*(2*SSe+1*CODe+30*SNJe+10*SNOe+2*BODe);
 
   annotation (
     Documentation(info="This component measures the Total Kjeldal Nitrogen (TKN) and the

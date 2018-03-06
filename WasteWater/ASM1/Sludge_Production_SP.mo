@@ -17,7 +17,7 @@ equation
   In.Q = 0.0;
 
   der(T) = 1.0;
-  der(SP) = (1/T)*(0.75*(In.Xs+In.Xi+In.Xbh+In.Xba)*Qw);
+  der(SP*T) = (0.75*(In.Xs+In.Xi+In.Xbh+In.Xba)*Qw);
 
   annotation (
     Documentation(info="This component measures the Total Kjeldal Nitrogen (TKN) and the
