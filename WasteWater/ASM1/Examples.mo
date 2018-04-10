@@ -1926,7 +1926,7 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
     connect(tank5.MeasurePort, sensor_O2.In)
       annotation (Line(points={{9.5,8.5},{9.5,38},{20.5,38}}, color={0,0,0}));
     connect(tank5.Kla, mixing_energy_ME.Kla5) annotation (Line(points={{2.2,8},
-            {4,8},{4,45},{10,45},{10,57},{9.6,57},{9.6,68}}, color={0,0,127}));
+            {4,8},{4,68},{9.6,68}},                          color={0,0,127}));
     connect(tank4.Out, tank5.In)
       annotation (Line(points={{-13,4},{-6,4}}, color={0,0,0}));
     connect(tank5.Out, divider.In) annotation (Line(points={{14,4},{17,4},{17,
