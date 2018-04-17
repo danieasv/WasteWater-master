@@ -5,12 +5,12 @@ model Sludge_Production_SP "SP"
   extends Interfaces.stoichiometry;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
             -110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealOutput TKN[2]
+  Modelica.Blocks.Interfaces.RealOutput SP
     annotation (Placement(transformation(extent={{88,-10},{108,10}})));
   Modelica.Blocks.Interfaces.RealInput Qw annotation (Placement(transformation(
         extent={{-84,30},{-64,50}})));
 
-  Real SP(start=0);
+  //Real SP(start=0);
   Real T(start=1e-3);
 
 equation

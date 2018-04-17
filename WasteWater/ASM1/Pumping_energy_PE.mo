@@ -9,10 +9,10 @@ model Pumping_energy_PE "PE"
           extent={{-84,-10},{-64,10}})));
   Modelica.Blocks.Interfaces.RealInput Qw annotation (Placement(transformation(
           extent={{-84,-50},{-64,-30}})));
-          Modelica.Blocks.Interfaces.RealOutput Q[3]
+          Modelica.Blocks.Interfaces.RealOutput PE
     annotation (Placement(transformation(extent={{88,-10},{108,10}})));
 
-  Real PE(start=0);
+  //Real PE(start=0);
   Real T(start=1e-3);
 
 equation

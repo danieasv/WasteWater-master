@@ -86,7 +86,7 @@ model nitri "ASM1 nitrification tank"
 equation
 //13.89
   // Temperature dependent oxygen saturation by Simba
-  So_sat = 40; //+ (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
+  So_sat = 8; //+ (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
 
   // extends the Oxygen differential equation by an aeration term
   // aeration [mgO2/l]; AirIn.Q_air needs to be in

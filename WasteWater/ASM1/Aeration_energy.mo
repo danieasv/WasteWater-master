@@ -9,8 +9,9 @@ model Aeration_energy "Fucking not even close to ideal sensor for Kl_fucking_a"
           extent={{-84,-10},{-64,10}})));
   Modelica.Blocks.Interfaces.RealInput Kla5 annotation (Placement(transformation(
           extent={{-84,-50},{-64,-30}})));
+  Modelica.Blocks.Interfaces.RealOutput AE  annotation (Placement(transformation(extent={{88,-10},{108,10}})));
 
-  Real AE(start=0);
+  //Real AE(start=0);
   Real T(start=1e-3);
 
 equation
