@@ -1,6 +1,6 @@
 within WasteWater.ASM1;
 model Settler_10 "Settler_10"
-  extends Settler_10;
+  extends Settler_New_task9;
  Interfaces.WWFlowAsm1in                 Feed annotation (Placement(transformation(extent={{-100,
             -10},{-80,10}}),
                    iconTransformation(extent={{-100,-10},{-80,10}})));
@@ -81,7 +81,7 @@ model Settler_10 "Settler_10"
 equation
   v = h/((g*(rhop - rhof)*d^2)/(18*mu));
   T = h/v;
-  A = T*Q/h
+  A = T*Feed.Q/h
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end Settler_10;

@@ -1055,8 +1055,8 @@ Parameters:
       columns=integer(({2,3,4,5,6,7,8,9,10,11,12,13,14,15})),
       tableName="Inf_dry",
       tableOnFile=("Inf_dry") <> "NoName",
-      fileName=
-          "M:/Documents/GitHub/WasteWater-master/WasteWater/Resources/ASM1/Inf_dry.txt")
+      fileName=ModelicaServices.ExternalReferences.loadResource(
+          "modelica://WasteWater/Resources/ASM1/Inf_dry.txt"))
                                            annotation (Placement(transformation(
             extent={{-111,78},{-91,98}})));
     WasteWater.ASM1.WWSource
@@ -1127,20 +1127,16 @@ Parameters:
         smooth=Smooth.None));
     connect(CombiTableTime.y,WWSource. data)
       annotation (Line(points={{-90,88},{-84,88}}));
-    connect(WWSource.Out, mixer.In1) annotation (Line(
-        points={{-65.2,81},{-66,81},{-66,72},{-108,72},{-108,35.5},{-104,35.5}},
-        color={0,0,0},
-        smooth=Smooth.None));
 
-    connect(wWSource2_1.Out, WasteSludge1.In) annotation (Line(
-        points={{-39.2,81},{-31,81},{-31,82.8},{-23,82.8}},
-        color={0,0,0},
-        smooth=Smooth.None));
+    connect(wWSource2_1.Out, mixer.In1) annotation (Line(points={{-39.2,81},{
+            -54,81},{-54,68},{-69,68},{-69,35.5},{-104,35.5}}, color={0,0,0}));
+    connect(WWSource.Out, WasteSludge1.In) annotation (Line(points={{-65.2,81},
+            {-44,81},{-44,82.8},{-23,82.8}}, color={0,0,0}));
     annotation (
       Diagram(coordinateSystem(
           preserveAspectRatio=false,
           extent={{-120,-100},{120,105}},
-          grid={1,1}), graphics),
+          grid={1,1})),
       Documentation(info="This ASM1 plant consists of 2 denitrification tanks (tank1 and tank2),
 3 nitrification tanks (tank3 - tank5) and a secondary clarifier by Takacs.
 Furthermore there are 2 control loops modelled.
@@ -2538,10 +2534,10 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
            {{122.84,49},{147,49},{147,-3.8},{153.6,-3.8}}, color={0,0,127}));
     connect(Settler.Return, ReturnPump.In) annotation (Line(points={{67,5},{74,
             5},{74,-22.7},{36,-22.7}}, color={0,0,0}));
-    connect(wWSource2_1.Out, mixer.In1) annotation (Line(points={{-44.2,84},{
-            -76,84},{-76,50},{-108,50},{-108,35.5},{-104,35.5}}));
-    connect(WWSource.Out, WasteSludge1.In) annotation (Line(points={{-65.2,81},
-            {-51,81},{-51,80.8},{-36,80.8}}, color={0,0,0}));
+    connect(WWSource.Out, mixer.In1) annotation (Line(points={{-65.2,81},{-83,
+            81},{-83,50},{-108,50},{-108,35.5},{-104,35.5}}));
+    connect(wWSource2_1.Out, WasteSludge1.In) annotation (Line(points={{-44.2,
+            84},{-41,84},{-41,80.8},{-36,80.8}}, color={0,0,0}));
     annotation (
       Diagram(coordinateSystem(
           preserveAspectRatio=false,
