@@ -2397,13 +2397,13 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
     WasteWater.ASM1.sensor_Q sensor_Q1
       annotation (Placement(transformation(extent={{1,-41},{-19,-21}})));
     WasteWater.ASM1.Sludge_Production_SP sludge_Production_SP
-      annotation (Placement(transformation(extent={{84,-89},{104,-69}})));
+      annotation (Placement(transformation(extent={{90,-75},{110,-55}})));
     WasteWater.ASM1.Mixing_energy_ME mixing_energy_ME
       annotation (Placement(transformation(extent={{7,62},{27,82}})));
     WasteWater.ASM1.nitri5c tank5
       annotation (Placement(transformation(extent={{-6,-6},{14,14}})));
     WasteWater.ASM1.Overall_Cost_Indicator overall_Cost_Indicator
-      annotation (Placement(transformation(extent={{151,-11},{171,9}})));
+      annotation (Placement(transformation(extent={{145,-12},{165,8}})));
   equation
     connect(divider.Out1, Settler.Feed) annotation (Line(points={{39,6.6},{44,
             6.6},{44,5},{49,5}}));
@@ -2494,21 +2494,22 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
         color={0,0,127},
         smooth=Smooth.None));
     connect(sensor_Q2.Q, sludge_Production_SP.Qw) annotation (Line(
-        points={{62,-77.8},{74,-77.8},{74,-75},{86.6,-75}},
+        points={{62,-77.8},{84,-77.8},{84,-61},{92.6,-61}},
         color={0,0,127},
         smooth=Smooth.None));
     connect(sludge_Production_SP.In, Settler.Effluent) annotation (Line(
-        points={{94,-89},{115,-89},{115,8},{67,8}},
+        points={{100,-75},{115,-75},{115,8},{67,8}},
         color={0,0,255},
         smooth=Smooth.None));
-    connect(Aeration_Energy_AE.Kla4, tank4.Kla) annotation (Line(points={{35.6,
-            86},{-11,86},{-11,8},{-24.8,8}}, color={0,0,127}));
+    connect(Aeration_Energy_AE.Kla4, tank4.Kla) annotation (Line(points={{35.6,86},
+            {-10,86},{-10,8},{-24.8,8}},     color={0,0,127}));
     connect(mixing_energy_ME.Kla4, tank4.Kla) annotation (Line(points={{9.6,72},
-            {-11,72},{-11,8},{-24.8,8}}, color={0,0,127}));
+            {0,72},{0,73},{-10,73},{-10,8},{-24.8,8}},
+                                         color={0,0,127}));
     connect(mixing_energy_ME.Kla3, tank3.Kla) annotation (Line(points={{9.6,76},
-            {-15,76},{-15,14},{-51,14},{-51,8},{-51.8,8}}, color={0,0,127}));
+            {-13,76},{-13,14},{-51,14},{-51,8},{-51.8,8}}, color={0,0,127}));
     connect(Aeration_Energy_AE.Kla3, tank3.Kla) annotation (Line(points={{35.6,90},
-            {-15,90},{-15,14},{-51,14},{-51,8},{-51.8,8}},
+            {-13,90},{-13,14},{-51,14},{-51,8},{-51.8,8}},
           color={0,0,127}));
     connect(Aeration_Energy_AE.Kla5, mixing_energy_ME.Kla5) annotation (Line(
           points={{35.6,82},{3,82},{3,68},{9.6,68}}, color={0,0,127}));
@@ -2521,21 +2522,21 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
     connect(tank5.Out, divider.In) annotation (Line(points={{14,4},{17,4},{17,
             4.3},{19,4.3}}, color={0,0,0}));
     connect(Aeration_Energy_AE.AE, overall_Cost_Indicator.AE) annotation (Line(
-          points={{52.8,86},{134,86},{134,4.8},{153.6,4.8}}, color={0,0,127}));
+          points={{52.8,86},{134,86},{134,3.8},{147.6,3.8}}, color={0,0,127}));
     connect(mixing_energy_ME.ME, overall_Cost_Indicator.ME) annotation (Line(
-          points={{26.8,72},{127,72},{127,-6.6},{153.6,-6.6}}, color={0,0,127}));
+          points={{26.8,72},{127,72},{127,-7.6},{147.6,-7.6}}, color={0,0,127}));
     connect(pumping_energy_PE.PE, overall_Cost_Indicator.PE) annotation (Line(
-          points={{-9.2,-57},{7,-57},{7,-98},{136,-98},{136,2},{153.6,2}},
+          points={{-9.2,-57},{7,-57},{7,-83},{136,-83},{136,1},{147.6,1}},
           color={0,0,127}));
     connect(sludge_Production_SP.SP, overall_Cost_Indicator.SP) annotation (
-        Line(points={{103.8,-79},{129,-79},{129,-11},{141,-11},{141,-1},{153.6,
-            -1}}, color={0,0,127}));
-    connect(sensor_COD1.COD, overall_Cost_Indicator.EC) annotation (Line(points=
-           {{122.84,49},{147,49},{147,-3.8},{153.6,-3.8}}, color={0,0,127}));
+        Line(points={{109.8,-65},{131,-65},{131,-2},{147.6,-2}},
+                  color={0,0,127}));
+    connect(sensor_COD1.COD, overall_Cost_Indicator.EC) annotation (Line(points={{122.84,
+            49},{140,49},{140,-4.8},{147.6,-4.8}},         color={0,0,127}));
     connect(Settler.Return, ReturnPump.In) annotation (Line(points={{67,5},{74,
             5},{74,-22.7},{36,-22.7}}, color={0,0,0}));
-    connect(WWSource.Out, mixer.In1) annotation (Line(points={{-65.2,81},{-83,
-            81},{-83,50},{-108,50},{-108,35.5},{-104,35.5}}));
+    connect(WWSource.Out, mixer.In1) annotation (Line(points={{-65.2,81},{-64,
+            81},{-64,77},{-82,77},{-82,50},{-108,50},{-108,35.5},{-104,35.5}}));
     connect(wWSource2_1.Out, WasteSludge1.In) annotation (Line(points={{-44.2,
             84},{-41,84},{-41,80.8},{-36,80.8}}, color={0,0,0}));
     annotation (

@@ -13,6 +13,22 @@ model Settler_10 "Settler_10"
  Interfaces.WWFlowAsm1out                 Waste annotation (Placement(transformation(extent={{80,-40},
             {100,-20}}),
                     iconTransformation(extent={{80,-40},{100,-20}})));
+
+  Real A(start=10.0,fixed=false);
+  Real T(start=1000.0,fixed=false);
+  Real v(start=1000.0,fixed=false);
+  Real rhop = 1200.0;
+  Real rhof = 1000.0;
+  Real d = 0.0005;
+  Real mu = 0.001;
+  Real h = 4.0;
+  Real g = 9.81;
+equation
+  v = h/((g*(rhop - rhof)*d^2)/(18*mu));
+  T = h/v;
+  A = T*Feed.Q/h
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+        coordinateSystem(preserveAspectRatio=false)));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
           points={{-58,60},{-58,-60},{58,-60},{58,60}},
@@ -67,21 +83,5 @@ model Settler_10 "Settler_10"
           fillColor={0,0,255},
           fillPattern=FillPattern.Solid),
         Line(points={{-58,16},{58,16}}, color={28,108,200})}),   Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
-
-  Real A(start=10.0,fixed=false);
-  Real T(start=1000.0,fixed=false);
-  Real v(start=1000.0,fixed=false);
-  Real rhop = 1200.0;
-  Real rhof = 1000.0;
-  Real d = 0.0005;
-  Real mu = 0.001;
-  Real h = 4.0;
-  Real g = 9.81;
-equation
-  v = h/((g*(rhop - rhof)*d^2)/(18*mu));
-  T = h/v;
-  A = T*Feed.Q/h
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end Settler_10;
