@@ -1932,14 +1932,15 @@ PS: For those who want to reproduce the exact figures from the COST simulation b
     connect(Aeration_Energy_AE.AE, overall_Cost_Indicator.AE) annotation (Line(
           points={{52.8,86},{62,86},{62,-1.2},{148.6,-1.2}},color={0,0,127}));
     connect(mixing_energy_ME.ME, overall_Cost_Indicator.ME) annotation (Line(
-          points={{26.8,72},{68,72},{68,85},{70,85},{70,-12.6},{148.6,-12.6}},
+          points={{26.8,72},{68,72},{68,-12.6},{148.6,-12.6}},
           color={0,0,127}));
     connect(pumping_energy_PE.PE, overall_Cost_Indicator.PE) annotation (Line(
           points={{-9.2,-57},{31,-57},{31,-4},{148.6,-4}},color={0,0,127}));
     connect(sludge_Production_SP.SP, overall_Cost_Indicator.SP) annotation (
-        Line(points={{103.8,-79},{87,-79},{87,-7},{148.6,-7}},color={0,0,127}));
+        Line(points={{103.8,-79},{111,-79},{111,-7},{148.6,-7}},
+                                                              color={0,0,127}));
     connect(sensor_COD1.COD, overall_Cost_Indicator.EC) annotation (Line(points={{122.84,
-            49},{97,49},{97,-9.8},{148.6,-9.8}},        color={0,0,127}));
+            49},{129,49},{129,-9.8},{148.6,-9.8}},      color={0,0,127}));
     annotation (
       Diagram(coordinateSystem(
           preserveAspectRatio=false,
